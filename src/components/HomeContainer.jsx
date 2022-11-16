@@ -52,7 +52,11 @@ const HomeContainer = () => {
                 key={data.id}
                 className=" lg:w-190  p-2 bg-cardOverlay backdrop-blur-md rounded-3xl flex flex-col items-center justify-center drop-shadow-lg"
               >
-                <img src={data.imageSrc} className="w-20 lg:w-40 -mt-10 lg:-mt-20" alt="I1" />
+                <img
+                  src={data.imageSrc}
+                  className="w-20 lg:w-40 -mt-10 lg:-mt-20"
+                  alt="I1"
+                />
                 <p className="text-base lg:text-lg font-semibold text-textColor mt-2 lg:mt-4">
                   {data.name}
                 </p>
