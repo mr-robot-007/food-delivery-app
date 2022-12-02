@@ -2,6 +2,8 @@ import I1 from "../img/i1.png";
 import F1 from "../img/f1.png";
 import C3 from "../img/c3.png";
 import Fi1 from "../img/fi1.png";
+import R4 from "../img/r4.png";
+import D2 from "../img/d2.png";
 
 const heroData = [
   {
@@ -32,6 +34,20 @@ const heroData = [
     price: "399",
     imageSrc: Fi1,
   },
+  // {
+  //   id: 5,
+  //   name: "Soft Drinks",
+  //   decp: "Pepsi",
+  //   price: "399",
+  //   imageSrc: D2,
+  // },
+  // {
+  //   id: 6,
+  //   name: "Rice",
+  //   decp: "Fried Rice",
+  //   price: "399",
+  //   imageSrc: R4,
+  // },
 ];
 
 export const categories = [

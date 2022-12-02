@@ -100,7 +100,7 @@ const CreateContainer = () => {
         const data = {
           id: `${Date.now()}`,
           title: title,
-          iamgeURL: imageAsset,
+          imageURL: imageAsset,
           category: category,
           calories: calories,
           qty: 1,
