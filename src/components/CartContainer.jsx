@@ -25,15 +25,23 @@ const CartContainer = () => {
     }, 0);
     setTot(totalPrice);
     console.log(tot);
-  }, [tot, flag]);
+  }, [tot, flag,cartItems]);
 
   const clearCart = () => {
+    let temp = cartItems;
+    for(let i = 0 ; i<temp.length;i++) {
+      temp[i].qty = 1;
+    }
+    localStorage.setItem("cartItems", JSON.stringify([]));
+    dispatch({
+      type: actionType.SET_CART_ITEMS,
+      cartItems: temp,
+    });
     dispatch({
       type: actionType.SET_CART_ITEMS,
       cartItems: [],
     });
 
-    localStorage.setItem("cartItems", JSON.stringify([]));
   };
 
   return (

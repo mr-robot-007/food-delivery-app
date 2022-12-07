@@ -10,19 +10,17 @@ const RowContainer = ({ flag, data, scrollValue }) => {
   const rowContainer = useRef();
 
   const [items, setItems] = useState([]);
+  const [count, setCount] = useState(0);
 
   const [{ cartItems }, dispatch] = useStateValue();
   const addToCart = () => {
+    localStorage.setItem("cartItems", JSON.stringify(items));
     dispatch({
       type: actionType.SET_CART_ITEMS,
       cartItems: items,
     });
-    console.log("h ",items);
     //push cartItems to localstorage, so even if it refreshes we have items with us
-    localStorage.setItem("cartItems", JSON.stringify(items));
   };
-
-  
 
   useEffect(() => {
     addToCart();
@@ -63,18 +61,39 @@ const RowContainer = ({ flag, data, scrollValue }) => {
                 className="w-8 h-8 rounded-full bg-red-700 mt-auto mb-auto flex items-center justify-center cursor-pointer hover:shadow-md"
                 // onClick={() => setItems([...cartItems, item])}
                 onClick={() => {
-                  // let temp =cartItems;
-                  // for (let i = 0; i < cartItems.length; i++) {
-                  //   if(cartItems[i].id == item.id){
-                  //     console.log("hello")
-                  //     temp[i].qty+=1
-                  //     setItems(temp)
-                  //     console.log(temp);
-                  //     return;
+                  let temp = cartItems;
+                  console.log("temp", temp);
+                  let i = 0;
+                  for (i = 0; i < temp.length; i++) {
+                    if (temp[i].id == item.id) {
+                      temp[i].qty += 1;
+                      console.log("temp[]", temp[i]);
+                      // setItems(...cartItems,temp[i]);
+                      setItems(temp);
+                      setCount(count + 1);
+                      // addToCart();
+                      // return;
+                      break;
+                    }
+                  }
+                  if (i === temp.length) {
+                    setItems([...cartItems, item]);
+                  }
+                  addToCart();
+                  // if (temp.include(item)) {
+                  //   // console.log("hello")
+                  //   // setItems([])
+                  //   for (let i = 0; i < temp.length; i++) {
+                  //     if (temp[i].id == item.id) {
+                  //       temp[i].qty += 1;
+                  //       break;
+                  //     }
                   //   }
-                  // }
-                  // // else{
-                    setItems([...cartItems, item])
+                  //   // temp[i].qty+=1
+                  //   setItems(temp);
+                  //   // addToCart();
+                  //   console.log("cart ", cartItems);
+                  // } else {
                   //   console.log(cartItems);
                   // }
                 }}

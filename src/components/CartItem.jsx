@@ -32,7 +32,10 @@ const CartItem = ({ item,setFlag,flag }) => {
     } else {
       // initial state value is one so you need to check if 1 then remove it
       if (qty === 1) {
-        setItems(cartItems.filter((item) => item.id !== id));
+        let temp = cartItems;
+        temp.splice(item,1)
+        setItems(temp);
+        // setItems(cartItems.filter((item) => item.id !== id));
         setFlag(flag + 1);
         cartDispatch();
       } else {
@@ -50,7 +53,7 @@ const CartItem = ({ item,setFlag,flag }) => {
 
   useEffect(() => {
     setItems(cartItems);
-  }, [qty, items]);
+  }, [qty, items,cartItems]);
 
   return (
     <div className="w-full p-1 px-2 rounded-lg bg-cartItem flex items-center gap-2">

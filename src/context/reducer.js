@@ -3,6 +3,7 @@ export const actionType = {
   SET_FOOD_ITEMS: 'SET_FOOD_ITEMS',
   SET_CART_SHOW: 'SET_CART_SHOW',
   SET_CART_ITEMS: 'SET_CART_ITEMS',
+  DEL_CART_ITEMS: 'DEL_CART_ITEMS',
 };
 
 const reducer = (state, action) => {
@@ -29,6 +30,11 @@ const reducer = (state, action) => {
         ...state,
         cartItems: action.cartItems,
       };
+    case actionType.DEL_CART_ITEMS:
+      return {
+        ...state,
+        cartItems: state.cartItems.filter((item)=> item.id !==action.payload.id)
+      }
     default:
       return state;
   }
